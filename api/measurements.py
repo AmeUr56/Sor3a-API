@@ -43,3 +43,8 @@ def upload_speed(server="http://speedtest.tele2.net/upload.php", data_size=1_000
     speed_mbps = (data_size * 8) / (taken_time * 1_000_000) 
 
     return round(speed_mbps, 3)
+
+
+#print(f"Download Speed: {download_speed()}")
+#print(f"Upload Speed: {upload_speed()}")
+
