@@ -1,7 +1,7 @@
 import requests
 import time
 
-def download_speed(url="http://ipv4.download.thinkbroadband.com/10MB.zip", chunk_size=1024):
+async def download_speed(url="http://ipv4.download.thinkbroadband.com/10MB.zip", chunk_size=1024):
     start_time = time.time()
 
     # Number of chunks
@@ -26,7 +26,7 @@ def download_speed(url="http://ipv4.download.thinkbroadband.com/10MB.zip", chunk
 
     return round(speed_mbps,3)
 
-def upload_speed(server="http://speedtest.tele2.net/upload.php", data_size=1_000_000):    
+async def upload_speed(server="http://speedtest.tele2.net/upload.php", data_size=1_000_000):    
     # Generate 5MB of example data
     data = b'0' * data_size 
     

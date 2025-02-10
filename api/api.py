@@ -8,6 +8,7 @@ import os
 from datetime import datetime
 
 from measurements import download_speed,upload_speed
+
 from scripts import get_client_ip,db_to_csv,db_to_json
 
 # Define a Pydantic model for Speed
@@ -59,7 +60,7 @@ async def disconnect_db():
          summary="Retrieve Download Speed")
 async def get_download_speed(request:Request):#,ip_address:str):
     ip_address = get_client_ip(request)
-    test_download_speed = download_speed()
+    test_download_speed = await download_speed()
     
     query = """
         INSERT INTO Test (ip_address,date_time,download_speed,upload_speed) 
@@ -79,7 +80,7 @@ async def get_download_speed(request:Request):#,ip_address:str):
 @app.get("/get_upload_speed/{test_id}",
          summary="Retrieve Upload Speed")
 async def get_upload_speed(test_id:int):
-    test_upload_speed = upload_speed()
+    test_upload_speed = await upload_speed()
     
     query = """
         UPDATE Test 
